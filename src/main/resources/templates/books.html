@@ -9,12 +9,18 @@
 <h3>Add book:</h3>
 <form method="post">
   <label>Title: <input type="text" id="title" name="title"></label>
+    <label>Author: <select id="author" name="author">
+        <th:scope th:each="author : ${authors}">
+            <option th:text="${author.getFullName()}" th:value="${author.getId()}"></option>
+        </th:scope>
+    </select></label>
   <input type="submit" value="Submit">
 </form>
 <h2>Books:</h2>
 <th:block th:each="book : ${books}">
   <ul>
-    <li th:text="${book.getTitle()}"></li>
+    <li th:text="'Title: ' + ${book.getTitle()}"></li>
+      <li th:text="'Author: ' + ${book.getAuthor().getFullName()}"></li>
   </ul>
 </th:block>
 </body>

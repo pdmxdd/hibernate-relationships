@@ -3,6 +3,7 @@ package dev.paulmatthews.hibernaterelationships.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Book {
@@ -10,6 +11,9 @@ public class Book {
     @GeneratedValue
     private int id;
     private String title;
+
+    @ManyToOne
+    private Author author;
 
     public Book() {}
 
@@ -27,5 +31,13 @@ public class Book {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 }
