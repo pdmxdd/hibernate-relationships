@@ -15,7 +15,7 @@
 <h2>Authors:</h2>
 <th:block th:each="author : ${authors}">
     <ul>
-        <li th:text="${author.getFullName()}"></li>
+        <li><a th:href="'/authors/' + ${author.getId()} + '/books'" th:text="${author.getFullName()}"></a></li>
     </ul>
 </th:block>
 </body>

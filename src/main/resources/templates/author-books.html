@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Authors!</title>
+</head>
+<body>
+<div th:replace="fragments/menu-fragment :: menu"></div>
+<h3 th:text="'Books by ' + ${author.getFullName}"></h3>
+<th:block th:each="book : ${books}">
+    <ul>
+        <li th:text="${book.getTitle()}"></li>
+    </ul>
+</th:block>
+</body>
+</html>
