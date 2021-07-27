@@ -24,7 +24,7 @@
 <h2>Books:</h2>
 <th:block th:each="book : ${books}">
   <ul>
-    <li th:text="'Title: ' + ${book.getTitle()}"></li>
+    <li><a th:href="'/books/' + ${book.getId()}" th:text="'Title: ' + ${book.getTitle()}"></a></li>
       <li th:text="'Author: ' + ${book.getAuthor().getFullName()}"></li>
       <li th:text="'ISBN: ' + ${book.getIsbn().getNumber()}"></li>
       <li th:text="'Country: ' + ${book.getIsbn().getCountry()}"></li>

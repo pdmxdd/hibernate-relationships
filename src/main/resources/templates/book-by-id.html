@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Book By ID!</title>
+</head>
+<body>
+<div th:replace="fragments/menu-fragment :: menu"></div>
+<ul>
+  <li th:text="'Title: ' + ${book.getTitle()}"></li>
+  <li th:text="'Author: ' + ${book.getAuthor().getFullName()}"></li>
+  <li th:text="'ISBN: ' + ${book.getIsbn().getNumber()}"></li>
+  <li th:text="'Country: ' + ${book.getIsbn().getCountry()}"></li>
+  <ul>
+    <th:block th:each="genre : ${book.getGenres()}">
+      <li th:text="'Genre: ' + ${genre.getType()}"></li>
+    </th:block>
+  </ul>
+
+</ul>
+<h3>Add Genre:</h3>
+<form method="post">
+  <label>Type: <select id="genreId" name="genreId">
+    <th:scope th:each="genre : ${allGenres}">
+      <option th:text="${genre.getType()}" th:value="${genre.getId()}"></option>
+    </th:scope>
+  </select></label>
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
