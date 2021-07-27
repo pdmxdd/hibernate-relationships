@@ -14,7 +14,7 @@
 <h2>Genres:</h2>
 <th:block th:each="genre : ${genres}">
   <ul>
-    <li th:text="'Type: ' + ${genre.getType()}"></li>
+    <li><a th:href="'/genres/' + ${genre.getId()}" th:text="'Type: ' + ${genre.getType()}"></a></li>
   </ul>
 </th:block>
 </body>

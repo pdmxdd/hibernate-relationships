@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Book By Genre!</title>
+</head>
+<body>
+<div th:replace="fragments/menu-fragment :: menu"></div>
+<h3 th:text="${genre.getType()} + ' genre books:'"></h3>
+  <ul>
+    <th:block th:each="book : ${genre.getBooks()}">
+      <li th:text="'Title: ' + ${book.getTitle()}"></li>
+    </th:block>
+  </ul>
+
+</ul>
+
+</body>
+</html>

@@ -9,25 +9,12 @@
 <h3>Add book:</h3>
 <form method="post">
   <label>Title: <input type="text" id="title" name="title"></label>
-    <label>Author: <select id="author" name="author">
-        <th:scope th:each="author : ${authors}">
-            <option th:text="${author.getFullName()}" th:value="${author.getId()}"></option>
-        </th:scope>
-    </select></label>
-    <label>ISBN: <select id="isbn" name="isbn">
-        <th:scope th:each="isbn : ${unregisteredIsbns}">
-            <option th:text="${isbn.getNumber()}" th:value="${isbn.getId()}"></option>
-        </th:scope>
-    </select></label>
   <input type="submit" value="Submit">
 </form>
 <h2>Books:</h2>
 <th:block th:each="book : ${books}">
   <ul>
     <li><a th:href="'/books/' + ${book.getId()}" th:text="'Title: ' + ${book.getTitle()}"></a></li>
-      <li th:text="'Author: ' + ${book.getAuthor().getFullName()}"></li>
-      <li th:text="'ISBN: ' + ${book.getIsbn().getNumber()}"></li>
-      <li th:text="'Country: ' + ${book.getIsbn().getCountry()}"></li>
   </ul>
 </th:block>
 </body>

@@ -10,12 +10,6 @@ public class Book {
     private int id;
     private String title;
 
-    @ManyToOne
-    private Author author;
-
-    @OneToOne
-    private ISBN isbn;
-
     @ManyToMany
     private List<Genre> genres;
 
@@ -29,14 +23,6 @@ public class Book {
 
     public void setGenres(List<Genre> genres) {
         this.genres = genres;
-    }
-
-    public ISBN getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(ISBN isbn) {
-        this.isbn = isbn;
     }
 
     public Book() {}
@@ -55,13 +41,5 @@ public class Book {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public Author getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(Author author) {
-        this.author = author;
     }
 }
