@@ -14,6 +14,11 @@
             <option th:text="${author.getFullName()}" th:value="${author.getId()}"></option>
         </th:scope>
     </select></label>
+    <label>ISBN: <select id="isbn" name="isbn">
+        <th:scope th:each="isbn : ${unregisteredIsbns}">
+            <option th:text="${isbn.getNumber()}" th:value="${isbn.getId()}"></option>
+        </th:scope>
+    </select></label>
   <input type="submit" value="Submit">
 </form>
 <h2>Books:</h2>
@@ -21,6 +26,8 @@
   <ul>
     <li th:text="'Title: ' + ${book.getTitle()}"></li>
       <li th:text="'Author: ' + ${book.getAuthor().getFullName()}"></li>
+      <li th:text="'ISBN: ' + ${book.getIsbn().getNumber()}"></li>
+      <li th:text="'Country: ' + ${book.getIsbn().getCountry()}"></li>
   </ul>
 </th:block>
 </body>
