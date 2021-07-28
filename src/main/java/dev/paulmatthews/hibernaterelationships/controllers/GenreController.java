@@ -6,16 +6,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Controller
 @RequestMapping(value = "/genres")
 public class GenreController {
     @Autowired
     GenreRepository genreRepository;
+
+    @GetMapping(value = "/{id}")
+    public String displayBooksByGenreId(@PathVariable int id, Model model) {
+        Optional<Genre> maybeGenre = genreRepository.findById(id);
+        if(maybeGenre.isEmpty()) {
+            return "redirect:/genres";
+        }
+        Genre selectedGenre = maybeGenre.get();
+        model.addAttribute("genre", selectedGenre);
+        return "genre-books";
+    }
 
     @GetMapping
     public String getGenres(Model model) {
