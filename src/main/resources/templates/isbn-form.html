@@ -17,6 +17,9 @@
   <ul>
     <li th:text="'Number: ' + ${isbn.getNumber()}"></li>
     <li th:text="'Country: ' + ${isbn.getCountry()}"></li>
+    <th:block th:if="${isbn.getBook()}">
+      <li><a th:href="'/books/' + ${isbn.getBook().getId()}" th:text="'Book: ' + ${isbn.getBook().getTitle()}"></a></li>
+    </th:block>
   </ul>
 </th:block>
 </body>
